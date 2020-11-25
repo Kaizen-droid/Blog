@@ -1,5 +1,6 @@
 <?php
 // x' or 1=1 or'
+//Listo
 // include :la inclusion del archivo no es obligatoria
 //include_once :carga una vez
 //require :carga siempre que se ejecute
