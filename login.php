@@ -1,11 +1,12 @@
 <?php
-// x' or 1=1 or'
-//Listo
-// include :la inclusion del archivo no es obligatoria
-//include_once :carga una vez
-//require :carga siempre que se ejecute
-
+session_start();
+//include la inclusion del archivo no es obligatoria
+//include_once carga una vez
+//require carga siempre que se ejecute
 require_once 'conexion.php';
+$_SESSION["login"] = "no";
+$_SESSION["nombre"] = "";
+
 $u = $_GET['user'];
 $p = $_GET['pass'];
 
@@ -14,13 +15,15 @@ $con = conexion();
 $comando = $con->prepare("SELECT * FROM usuarios WHERE user=:u AND pass=:p");
 $comando->bindValue(":u", $u);
 $comando->bindValue(":p", $p);
+
 $comando->execute();
 $consulta = $comando->fetch();
 
 if($consulta){
-    echo "si";
+    $_SESSION["login"] = "si";
+    $_SESSION["nombre"] = $consulta["nombre"];
+    echo json_encode(["resp"=>"si"]);
 }else{
-    echo "no";
+    echo json_encode(["resp"=>"no"]);
 }
-
 ?>

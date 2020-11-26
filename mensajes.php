@@ -1,6 +1,8 @@
+<?php
+require_once "seguridad.php"
+?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +11,13 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Blog</title>
 </head>
-
-
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark colorFondo">
         <a class="navbar-brand" href="#">
             <i class="material-icons">comment</i>
             Blog
         </a>
-        <button class="navbar-toggler" data-toogle="collapse" data-target="#menuPrincipal">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#menuPrincipal">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -29,7 +29,7 @@
                 <li class="nav-item"><a class="nav-link" href="mensajes.html">Mensajes</a></li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuario</a></li>
+                <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.html">Salir</a></li>
@@ -39,24 +39,28 @@
 
     <div class="container">
         <div class="row">
+            <div class="col"><span>Tema:</span><span id="nombreTema">Programacion</span></div>
+        </div>
+        <div class="row">
             <div class="col"></div>
             <div class="col">
                 <div class="card mt-5">
                     <div class="card-header colorFondo colorTexto">
-                        Agregar Tema
+                        Agregar mensaje
                     </div>
                     <div class="card-body">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    Tema:
+                                    Mensaje:
                                 </div>
                             </div>
-                            <input type="text" name="tema" id="tema" class="form-control" placeholder="Nombre de Tema">
+                            <input type="text" name="mensaje" id="mensaje" 
+                            class="form-control" placeholder="Escribe tu mensaje">
                         </div>
                     </div>
                     <div class="card-footer text-center">
-                        <button class="btn colorFondo colorTexto" onclick="agregarTema()">
+                        <button class="btn btn-primary" onclick="agregarMensaje()">
                             <i class="material-icons align-middle">add_circle</i>
                         </button>
                     </div>
@@ -71,6 +75,9 @@
                         <tr>
                             <th>Id</th>
                             <th>Tema</th>
+                            <th>Mensaje</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
                             <th>...</th>
                         </tr>
                     </thead>
@@ -78,6 +85,9 @@
                         <tr>
                             <td>1</td>
                             <td>Programacion</td>
+                            <td>Hola</td>
+                            <td>Admin</td>
+                            <td>2020-09-28</td>
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#modificaTema">
                                     <i class="material-icons align-middle">edit</i>
@@ -87,81 +97,65 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Matematicas</td>
-                            <td>
-                                <button class="btn btn-primary">
-                                    <i class="material-icons align-middle">edit</i>
-                                </button>
-                                <button class="btn btn-danger">
-                                    <i class="material-icons align-middle">cancel</i>
-                                </button>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-
-
-    <!-- Ventana Modal para editar -->
+    <!-- Es una ventana modal para editar -->
     <div class="modal fade" id="modificaTema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Tema</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                Tema:
-                            </div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Mensaje</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            Mensaje:
                         </div>
-                        <input type="text" name="temaEditar" id="temaEditar" class="form-control"
-                            placeholder="Nombre de tema">
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" onclick="guardaCambios()" class="btn btn-primary"
-                        data-dismiss="modal">Guardar</button>
+                    <input type="text" name="msgEditar" id="msgEditar" 
+                    class="form-control" placeholder="Nombre de tema">
                 </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" onclick="guardaCambios()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Es una ventana modal para eliminar-->
-    <div class="modal fade" id="eliminaTema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Tema</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>¿Esta seguro de ELIMINAR el tema? Se ELIMINARAN todos los mensajes relacionados</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="button" onclick="confirmaEliminar()" class="btn btn-primary" data-dismiss="modal">Si</button>
-                </div>
-            </div>
+<!-- Es una ventana modal para eliminar -->
+<div class="modal fade" id="eliminaTema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Eliminar Mensaje</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+            <p>¿esta seguro de elimanr el mensaje?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" onclick="confirmaEliminar()" class="btn btn-primary" data-dismiss="modal">Si</button>
+        </div>
+      </div>
     </div>
+  </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/inicio.js"></script>
+    <script src="js/mensajes.js"></script>
 </body>
-
 </html>
