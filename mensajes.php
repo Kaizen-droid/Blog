@@ -20,16 +20,15 @@ require_once "seguridad.php"
         <button class="navbar-toggler" data-toggle="collapse" data-target="#menuPrincipal">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="menuPrincipal">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="inicio.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="inicio.php">Inicio</a></li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="mensajes.html">Mensajes</a></li>
+                <li class="nav-item"><a class="nav-link" href="mensajes.php">Mensajes</a></li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuarios</a></li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="index.html">Salir</a></li>
