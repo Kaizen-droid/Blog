@@ -13,12 +13,12 @@ $p = $_GET['pass'];
 $con = conexion();
 
 $comando = $con->prepare("SELECT * FROM usuarios WHERE user=:u AND pass=:p");
-$comando->bindValue(":u", $u);
-$comando->bindValue(":p", $p);
+$comando->bindValue(':u', $u);
+$comando->bindValue(':p', $p);
 
 $comando->execute();
 $consulta = $comando->fetch();
-
+    
 if($consulta){
     $_SESSION["login"] = "si";
     $_SESSION["nombre"] = $consulta["nombre"];
@@ -27,4 +27,4 @@ if($consulta){
 }else{
     echo json_encode(["resp"=>"no"]);
 }
-?>
+

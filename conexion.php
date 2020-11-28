@@ -10,8 +10,8 @@ function conexion () {
         $c = new PDO("mysql:host={$server};dbname={$db}", $user, $pass);
         $c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $c;
-    }catch(PDOException $e){
+    }catch(PDOExcpetion $e){
         exit($e->getMessage());
     }
+    
 }
-?>

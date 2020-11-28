@@ -1,5 +1,5 @@
 <?php
-require_once "seguridad.php"
+require_once 'seguridad.php'
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,6 +20,7 @@ require_once "seguridad.php"
         <button class="navbar-toggler" data-toggle="collapse" data-target="#menuPrincipal">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="menuPrincipal">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="inicio.php">Inicio</a></li>

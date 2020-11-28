@@ -12,18 +12,19 @@ $("#nombreTema").text(sessionStorage.getItem('tema'));
 
 function agregarMensaje(){
     let id = sessionStorage.getItem("idtema");
+    console.log(id);
     let msg = $("#mensaje").val();
     //console.log(id);
     //console.log(msg);
     $.getJSON("crud_mensajes.php",{operacion:'C', idtema:id, mensaje:msg}).done(function(datos){
-        //console.log(datos);
+        console.log(datos);
         if(datos.resp == "si"){
             consulta();
         }else{
             $('.toast').toast('show')
         }
     }).fail(function(error){
-        //console.log(error);
+        console.log(error);
     });
 
     // let msg = $("#mensaje").val();

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["login"])){
+if(!isset($_SESSION["login"])){
     echo '
     <div class="alert alert-danger" role="alert">
         Error, debes iniciar sesion.
@@ -16,4 +16,3 @@ if($_SESSION["login"] == "no"){
     ';
     exit(0);
 }
-?>
