@@ -26,12 +26,6 @@ function agregarMensaje(){
         //console.log(error);
     });
 
-    // let msg = $("#mensaje").val();
-    // msgId ++;
-    // nuevoMsg = {id: msgId,tema:'Programacion', mensaje: msg, usuario:'juan', fecha:'2020-09-28'};
-    // mensajes.push(nuevoMsg);
-    // console.log(mensajes);
-    // actualizar();
 }
 
 function actualizar(){

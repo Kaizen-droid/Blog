@@ -32,7 +32,7 @@ require_once 'seguridad.php'
                 <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuarios</a></li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.php">Salir</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Salir</a></li>
             </ul>
         </div>
     </nav>
